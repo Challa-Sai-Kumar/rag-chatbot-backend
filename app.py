@@ -1,7 +1,18 @@
+import subprocess
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from gemini_rag_chatbot import GeminiRAGChatbot
-import os
+
+# Run startup.py to create Chroma DB if it doesn't exist
+try:
+    if not os.path.exists("chroma_db"):
+        print("Chroma DB not found. Running setup...")
+        subprocess.run(["python", "startup.py"], check=True)
+    else:
+        print("Chroma DB already exists. Skipping setup.")
+except Exception as e:
+    print(f"❌ Error running startup script: {e}")
 
 app = FastAPI(title="Gemini RAG Chatbot API", version="1.0.0")
 
