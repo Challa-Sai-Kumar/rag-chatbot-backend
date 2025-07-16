@@ -8,7 +8,7 @@ from gemini_rag_chatbot import GeminiRAGChatbot
 try:
     if not os.path.exists("chroma_db"):
         print("Chroma DB not found. Running setup...")
-        subprocess.run(["python", "startup.py"], check=True)
+        subprocess.run(["python", "setup.py"], check=True)
     else:
         print("Chroma DB already exists. Skipping setup.")
 except Exception as e:
