@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 # API configuration
-API_URL = "http://localhost:8000"
+API_URL = "https://rag-chatbot-backend-p6lc.onrender.com/"
 
 def check_api_health():
     """Check if API is running"""
