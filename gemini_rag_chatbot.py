@@ -14,6 +14,7 @@ class GeminiRAGChatbot:
         
         # Configure Gemini
         genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+        print("<_____________________________________________GEMINI_API_KEY present:", "Yes" if os.getenv("GEMINI_API_KEY") else "No")
         self.model = genai.GenerativeModel('gemini-1.5-flash')
         
         self.vectorstore = None
@@ -76,9 +77,9 @@ class GeminiRAGChatbot:
             
             # Generate response using Gemini
             response = self.model.generate_content(prompt)
-            print("<-----------------------------response:", response)
+            # print("<-----------------------------response:", response)
             answer = response.text.strip()
-            print("<--------------------------------answer:", answer)
+            # print("<--------------------------------answer:", answer)
             
             # Check if the response indicates lack of knowledge
             if any(phrase in answer.lower() for phrase in ["i don't know", "i cannot", "not found", "no information", "not mentioned"]):
